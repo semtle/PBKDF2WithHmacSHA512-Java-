@@ -7,7 +7,7 @@ PBKDF2 with Hmac SHA512 password cryptography.
 
 
 
-##Useage:
+##Usage:
 ```java
 // The password to encrypt 
 final String password = "password";
