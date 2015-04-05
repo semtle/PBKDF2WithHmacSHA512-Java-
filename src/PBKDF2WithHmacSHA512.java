@@ -67,6 +67,15 @@ public final class PBKDF2WithHmacSHA512 {
 	 * The random salted data used for password matching.
 	 */
 	private static final byte[] SALT = new byte[16];
+	
+	/**
+	 * Private constructor to stop the class from being instantiated. 
+	 * 
+	 * @throws AssertionError If the class tried to be instantiated.
+	 */
+	private PBKDF2WithHmacSHA512() {
+		throw new AssertionError();
+	}
 
 	/**
 	 * This method returns an encrypted byte[] of the password.
