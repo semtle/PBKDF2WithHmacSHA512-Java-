@@ -20,12 +20,17 @@ final byte[] hash = PBKDF2WithHmacSHA512.hash(password, salt);
 // Authentication:
 
 final String attemptedPassword = "swagger";
+
 boolean valid = PBKDF2WithHmacSHA512.authenticate(attemptedPassword, salt, hash);
 
 if (valid) {
+
   // The password was correct
+  
 } else {
+
   // The password was incorrect
+  
 }
 
 Note: When storing the password to a database you only need to store the salt and hash. Not the actual password itself.
