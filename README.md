@@ -3,7 +3,7 @@ PBKDF2 with HmacSHA512 password cryptography.
 
 ##Useage:
 
-// The password to encrypt
+// The password to encrypt 
 final String password = "password";
 
 // We need to generate a random Salt before we can encrypt the password
