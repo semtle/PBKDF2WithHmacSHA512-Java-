@@ -1,11 +1,11 @@
 # PBKDF2WithHmacSHA512
 PBKDF2 with Hmac SHA512 password cryptography.
 
-(PBKDF2)[http://en.wikipedia.org/wiki/PBKDF2]
+[PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
 
-(HMAC)[http://en.wikipedia.org/wiki/Hash-based_message_authentication_code]
+[HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
 
-(SHA512)[http://en.wikipedia.org/wiki/SHA-2]
+[SHA512](http://en.wikipedia.org/wiki/SHA-2)
 
 
 
