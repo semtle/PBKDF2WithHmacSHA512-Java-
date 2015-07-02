@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -42,7 +41,7 @@ import javax.crypto.spec.PBEKeySpec;
  * Cryptography Specification</a>
  * 
  * @author Suraj Kumar <k975@live.co.uk>
- * @version 1.0
+ * @version 2.0
  */
 public final class PBKDF2WithHmacSHA512 {
 	/**
@@ -63,11 +62,6 @@ public final class PBKDF2WithHmacSHA512 {
 	 */
 	private static final int KEY_LENGTH = 64;
 
-	/**
-	 * The random salted data used for password matching.
-	 */
-	private static final byte[] SALT = new byte[16];
-	
 	/**
 	 * Private constructor to stop the class from being instantiated. 
 	 * 
@@ -97,7 +91,7 @@ public final class PBKDF2WithHmacSHA512 {
 	}
 
 	/**
-	 * Generates a random salt.
+	 * Generates a random salt used for password matching.
 	 * 
 	 * @return A randomly produced byte[].
 	 * 
@@ -105,16 +99,20 @@ public final class PBKDF2WithHmacSHA512 {
 	 *             If SHA1PRNG does not exist on the system.
 	 */
 	public static byte[] salt() throws NoSuchAlgorithmException {
-		SecureRandom.getInstance("SHA1PRNG").nextBytes(SALT);
-		return SALT;
+		final byte[] salt = new byte[16];
+		SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
+		return salt;
 	}
 	
 	/**
 	 * This method takes a byte[] and converts it to a String.
+	 * E.g. byte[] test = {1, 2, 3, 4} this method will convert that 
+	 * into a String that looks like this: "1 2 3 4";
+	 * 
+	 * This allows you to save an array to a database easily.
 	 * 
 	 * @param payload The byte[] to convert to a String
 	 * @return The converted byte[] as a String
-	 * @throws UnsupportedEncodingException If UTF-8 is not available. This is a rare occurrence.
 	 */
 	public static String convertToString(final byte[] payload) {
 		String result = "";
